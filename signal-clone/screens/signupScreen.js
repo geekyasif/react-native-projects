@@ -15,6 +15,7 @@ export default function loginScreen({navigation}) {
         })
     }, [navigation])
 
+    
     // creating funtion for registering user with firebase
     const signup = () =>{
             auth.createUserWithEmailAndPassword(Email, Password)

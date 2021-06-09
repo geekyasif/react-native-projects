@@ -1,21 +1,44 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { StyleSheet, View, Text, Image ,TouchableOpacity} from 'react-native'
+import { db, auth } from '../firebase';
+import * as firebase from "firebase"
 
-export default function chat({id, chatName, enterChat, navigation}) {
+export default function chat({id, chatName, route, enterChat}) {
+    const [messages, setMessages] = useState([])
+
+    useEffect(()=>{
+        const unsubscribe = db.collection('chats')
+        .doc(id)
+        .collection('messages')
+        .orderBy('timestamp', 'asc')
+        .onSnapshot(snapshot => setMessages(
+            snapshot.docs.map(doc =>({
+                    id: doc.id,
+                    data: doc.data()
+            }))
+        ))
+        return unsubscribe
+    },[route])
+
     return (
-        <TouchableOpacity style={styles.mainChatContainer} key={id} onPress={()=> enterChat(id, chatName)}>
+        <TouchableOpacity 
+            style={styles.mainChatContainer} 
+            key={id} 
+            onPress={()=> enterChat(id, chatName)}>
 
             <View style={styles.row}>
                 <View style={styles.avatarContainer}>
                     <Image 
                         style={styles.avatar}
-                        source={require('../assets/b.jpg')}
+                        source={{
+                            uri: messages[0]?.data.photoURL || "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png"
+                        }}
                     />
                 </View>
                 <View style={styles.chatContainer}>
                     <Text style={styles.title}>{chatName}</Text>
                     {/* <View style={styles.chatContainer}> */}
-                        <Text style={styles.chat}>acbc</Text>
+                        <Text  style={styles.chat}>{messages?.[0]?.displayName}: {messages?.[0]?.message}</Text>
                     {/* </View> */}
                 </View>
             </View>

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect,useEffect, useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { Avatar } from 'react-native-elements/dist/avatar/Avatar'
 import { Feather, Ionicons } from '@expo/vector-icons'; 
@@ -28,7 +28,10 @@ export default function enterChat({navigation, route}) {
                     <Avatar
                         style={{ width: 30, height: 30, marginTop: 4}} 
                         rounded 
-                        source={require('../assets/avatar.png')}
+                        source={{
+                            //require('../assets/avatar.png')
+                            uri: messages[0]?.data.photoURL || "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png"
+                        }}
                     />
                     <Text 
                         style={{
@@ -74,7 +77,7 @@ export default function enterChat({navigation, route}) {
             setInput('')
     }
 
-    useLayoutEffect(()=>{
+    useEffect(()=>{
         const unsubscribe = db.collection('chats')
         .doc(route.params.id)
         .collection('messages')
@@ -121,13 +124,13 @@ export default function enterChat({navigation, route}) {
                                             containerStyle={{
                                                 position:'absolute',
                                                 bottom:-20,
-                                                right: -5,
+                                                left: -5,
 
                                             }}
                                             // web view
                                                 position="absolute"
                                                 rounded
-                                                right={-5}
+                                                left={-5}
                                                 size={30}
                                                 source={{
                                                     uri: data.photoURL
@@ -195,6 +198,13 @@ const styles = StyleSheet.create({
 
     },
 
+    senderText:{
+        color: 'white',
+        fontWeight: '500',
+        marginLeft: 10,
+        marginBottom: 15
+    },
+
     recieverText:{
         color: 'white',
         fontWeight: '500',
@@ -202,15 +212,16 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
 
+
     senderContainer:{
         backgroundColor: '#2B68E6',
         borderRadius: 20,
         padding: 15,
         position: 'relative',
         maxWidth: '80%',
-        marginRight: 15,
+        marginLeft: 15,
         marginBottom: 20,
-        alignSelf: 'flex-end',
+        alignSelf: 'flex-start',
         marginTop: 13
     },
 })

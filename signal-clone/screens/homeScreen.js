@@ -71,7 +71,7 @@ export default function homeScreen({navigation}) {
     const enterChat = (id, chatName) => {
         navigation.navigate('enterChat', {
             id: id, 
-            chatName: chatName
+            chatName: chatName,
         });
     };
 
@@ -79,7 +79,7 @@ export default function homeScreen({navigation}) {
             <SafeAreaView >
                 <ScrollView style={styles.container}>
                     {Chats.map(({ id, data: {chatName} })=>(
-                                <Chat key={id} id={id} chatName={chatName} enterChat={enterChat}/>
+                                <Chat key={id} id={id} chatName={chatName}  enterChat={enterChat}/>
                         ))}
                 </ScrollView>
             </SafeAreaView>
