@@ -24,11 +24,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.mdasif08737.covidtracker"
+      "package": "com.mdasif08737.covidtracker",
+      "versionCode" : 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "live covid 19 cases using fatch api"
+    "description": "Get the live upadates of Covid19"
   }
 }

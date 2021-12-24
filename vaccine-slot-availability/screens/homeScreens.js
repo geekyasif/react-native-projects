@@ -33,7 +33,7 @@ export default function homeScreens({navigation}) {
                         keyboardType='numeric'
                     />
                     <Button
-                        title="Cheack Availability"
+                        title="Check Availability"
                         // color="#1ABC9C"
                         color="#17A589"
                         onPress={()=> navigation.navigate('Data', {url: url})}

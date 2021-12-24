@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { StyleSheet, View, Text, Image ,TouchableOpacity} from 'react-native'
-import { db, auth } from '../firebase';
-import * as firebase from "firebase"
+import { db } from '../firebase';
+
 
 export default function chat({id, chatName, route, enterChat}) {
     const [messages, setMessages] = useState([])

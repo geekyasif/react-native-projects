@@ -4,6 +4,9 @@ import { View, Text } from 'react-native'
 import DataCenters from '../components/dataCenters'
 import Spinner from 'react-native-loading-spinner-overlay';
 
+
+
+
 export default function dataScreen({navigation, route}) {
     const [data, setData] = useState([])
     const [isLoading, setLoading] = useState(true);
@@ -30,6 +33,8 @@ export default function dataScreen({navigation, route}) {
         })
     }, []);
 
+            
+     
     return (
             <SafeAreaView style={styles.container}>
     
