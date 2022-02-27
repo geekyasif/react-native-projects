@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "multiple-page-route",
-    "slug": "multiple-page-route",
+    "name": "wallpaper-app",
+    "slug": "wallpaper-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,11 +24,10 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.mdasif08737.multiplepageroute"
+      "package": "com.mdasif08737.wallpaperapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "description": "movie review app with multiple screens and react native navigation "
+    }
   }
 }
